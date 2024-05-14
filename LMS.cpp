@@ -1,10 +1,12 @@
 /*
-   LIBRARY MANAGEMENT SYSTEM
+CPP MINI PROJECT:
+                  LIBRARY MANAGEMENT SYSTEM
 By:
    23CS052 DHAIRYATI PANDYA
    23CS051 PARAM PAMBHAR
    23CS059 DEVARSHI PATEL
 */
+
 #include <iostream>
 #include<conio.h>
 #include<iomanip>//input-output manipulator
