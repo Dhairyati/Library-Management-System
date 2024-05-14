@@ -143,3 +143,59 @@ void writebook()
 	}while(ch=='y'||ch=='Y');
 	fp.close();
 }
+void writestudent()
+{
+	char ch;
+	fp.open("student.dat",ios::out|ios::app);//write and append data
+	do{
+		 system("CLS");
+		st.createstudent();
+		fp.write((char*)&st,sizeof(student));//size of class
+		cout<<"\n\nDo you want to add more record...(y/n?) ";
+		cin>>ch;
+	}while(ch=='y'||ch=='Y');
+	fp.close();
+}
+
+ void displayalls()
+ {
+	  system("CLS");
+	 fp.open("student.dat",ios::in);//read mode
+	 if(!fp)
+	 {
+		 cout<<"File Could Not Be Open";
+		 getch();
+		 return;//press any key and return
+	 }
+	 cout<<"\n\n\t\tStudent List\n\n";
+	 cout<<"==================================================================\n";
+	 cout<<"\tAdmission No."<<setw(10)<<"Name"<<setw(20)<<"Book Issued\n";
+	 cout<<"==================================================================\n";
+	 while(fp.read((char*)&st,sizeof(student)))
+	 {
+		 st.report();
+	 }
+	 fp.close();
+	 getch();
+ }
+  void displayallb()
+ {
+	  system("CLS");
+	 fp.open("book.dat",ios::in);//read mode
+	 if(!fp)
+	 {
+		 cout<<"File Could Not Be Open";
+		 getch();
+		 return;//press any key and return
+	 }
+	 cout<<"\n\n\t\tBook List\n\n";
+	 cout<<"==================================================================\n";
+	 cout<<"\tBook No."<<setw(20)<<"Book Name"<<setw(25)<<"Book Author\n";
+	 cout<<"==================================================================\n";
+	 while(fp.read((char*)&bk,sizeof(book)))
+	 {
+		 bk.report();
+	 }
+	 fp.close();
+	 getch();
+ }
