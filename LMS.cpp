@@ -199,3 +199,108 @@ void writestudent()
 	 fp.close();
 	 getch();
  }
+void bookissue()
+ {
+	 char sn[6],bn[6];
+	 int found=0,flag=0;
+	  system("CLS");
+	 cout<<"\n\nBOOK ISSUE...";
+	 cout<<"\n\n\tEnter Admission no.";
+	 cin>>sn;
+	 fp.open("student.dat",ios::in|ios::out);
+	 fp1.open("book.dat",ios::in|ios::out);
+	 while(fp.read((char*)&st,sizeof(student))&& found==0)
+	 {
+		 if(strcmpi(st.retadmno(),sn)==0)//compare admsn no.
+		 {
+			 found=1;
+			 if(st.rettoken()==0)//if book not issued
+			 {
+				 cout<<"\n\n\tEnter The Book No.";
+			 cin>>bn;
+			  while(fp1.read((char*)&bk,sizeof(book))&& flag==0)
+			  {
+				   if(strcmpi(bk.retbno(),bn)==0)//compare book no.
+		             {
+			          flag=1;
+					  st.addtoken();
+					  st.getstbno(bk.retbno());//pass book no.
+					  int pos=-1*sizeof(st);
+					  fp.seekg(pos,ios::cur);
+					  fp.write((char*)&st,sizeof(student));
+					  cout<<"\n\n\tBook Issued Successfully\n\n";
+					  
+					
+			  }
+		 }
+		 if(flag==0) {
+			 cout<<"Book No. Does Not Exists";
+		 } 
+	 } 
+	 
+	 else
+	 {	 
+		 cout<<"You Have Not Returned The Last Book"; 
+	 }
+	 }
+ }
+ if(found==0)
+ {
+	 cout<<"Student Record Not Exists.";
+ }
+ getch();
+ fp.close();
+ fp1.close();
+ }
+ 
+ void bookdeposit()
+ {
+	 char sn[6],bn[6];
+	 int found=0,flag=0,day,fine;
+	  system("CLS");
+	 cout<<"\n\nBOOK DEPOSIT...";
+	 cout<<"\n\n\tEnter Admission no. Of Student";
+	 cin>>sn;
+	 fp.open("student.dat",ios::in|ios::out);
+	 fp1.open("book.dat",ios::in|ios::out);
+	 while(fp.read((char*)&st,sizeof(student))&& found==0)
+	 {
+		 if(strcmpi(st.retadmno(),sn)==0)//compare admsn no.
+		 {
+			 found=1;
+			 if(st.rettoken()==1)//if book issued
+			 {
+				 while(fp1.read((char*)&bk,sizeof(book))&& flag==0)
+			  {
+				   if(strcmpi(bk.retbno(),st.retstbno())==0)
+		             {
+			          flag=1;
+					  bk.showbook();
+					  st.resettoken();
+					 
+					  int pos=-1*sizeof(st);
+					  fp.seekg(pos,ios::cur);
+					  fp.write((char*)&st,sizeof(student));
+					  cout<<"\n\n\tBook Deposited Successfully";
+			  }
+		 }
+		 if(flag==0)
+		 {
+			 cout<<"Book No. Does Not Exists";
+		 } 
+	 } 
+	 
+	 else
+	 {
+		 cout<<"No Book Issued"; 
+	 }
+	 }
+ }
+ if(found==0){
+	 cout<<"Student Record Not Exists..."; 
+ }
+ getch();
+ fp.close();
+ fp1.close();
+ }
+ 
