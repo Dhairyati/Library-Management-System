@@ -126,3 +126,20 @@ class student
 		cout<<"\t"<<admno<<setw(20)<<name<<setw(10)<<token<<endl ;
 	}
 };//class ends here
+fstream fp,fp1;//object
+book bk;//book class object
+student st;//student class object
+
+void writebook()
+{
+	char ch;
+	fp.open("book.dat",ios::out|ios::app);//write and append data
+	do{
+		 system("CLS");
+		bk.createbook();
+		fp.write((char*)&bk,sizeof(book));//size of class
+		cout<<"\n\nDo you want to add more record...(y/n?) ";
+		cin>>ch;
+	}while(ch=='y'||ch=='Y');
+	fp.close();
+}
