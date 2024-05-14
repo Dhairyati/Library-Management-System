@@ -304,3 +304,10 @@ void bookissue()
  fp1.close();
  }
  
+void start()
+{  system("CLS");
+cout<<"\n\n\n\n\t\t LIBRARY \t MANAGEMENT \t SYSTEM";
+cout<<"\n\nBy: \n\n 23CS052 DHAIRYATI PANDYA\n 23CS051 PARAM PAMBHAR\n 23CS059 DEVARSHI PATEL";
+cout<<" \n\n Please press Enter."; 
+getch();
+}
