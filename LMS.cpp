@@ -61,3 +61,68 @@ class book
 		cout<<bno<<setw(30)<<bname<<setw(30)<<aname<<endl;
 	}
 };//class ends here
+class student
+{
+	char admno[6];//admission no.
+	char name[20];
+	char stbno[6];// student book no 
+	int token;//total book of student
+	public:
+	void createstudent()
+	{
+		 system("CLS");
+		cout<<"\nNEW STUDENT ENTRY...\n";
+		cout<<"\nEnter The Admission No. : ";
+		cin>>admno;
+		cout<<"Enter The Student Name : ";
+		cin>>name;
+		token=0;
+		stbno[0]='\0';
+		cout<<"\n\nStudent Record Created...";
+	}
+	void showstudent()
+	{
+		cout<<"\nAdmission Number : "<<admno;
+		cout<<"\nStudent Name : ";
+		cout<<name;
+		cout<<"\nNo. of Books Issued : "<<token;
+		if(token==1)
+		{
+			cout<<"\nBook Number: "<<stbno;
+		}
+	}
+	void modifystudent()
+	{
+		cout<<"\nAdmission No. : "<<admno;
+		cout<<"\nModify Student Name : ";
+		gets(name);
+	}
+	char* retadmno()
+	{
+		return admno;
+	}
+	char* retstbno()
+	{
+		return stbno;
+	}
+	int rettoken()
+	{
+		return token;
+	}
+	void addtoken()
+	{
+		token=1;
+	}
+	void resettoken()
+	{ 
+	token=0;
+	}
+	void getstbno(char t[])
+	{
+		strcpy(stbno,t);
+	}
+	void report()
+	{
+		cout<<"\t"<<admno<<setw(20)<<name<<setw(10)<<token<<endl ;
+	}
+};//class ends here
