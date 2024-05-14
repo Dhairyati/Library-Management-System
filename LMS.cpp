@@ -311,3 +311,62 @@ cout<<"\n\nBy: \n\n 23CS052 DHAIRYATI PANDYA\n 23CS051 PARAM PAMBHAR\n 23CS059 D
 cout<<" \n\n Please press Enter."; 
 getch();
 }
+void adminmenu()
+{
+	 system("CLS");
+	int ch2;
+	cout<<"\n\n\n\tADMINISTRATOR MENU";
+	cout<<"\n\n\n\t1.CREATE STUDENT RECORD";
+	cout<<"\n\n\n\t2.DISPLAY ALL STUDENT RECORD";
+	cout<<"\n\n\n\t3.CREATE BOOK";
+	cout<<"\n\n\n\t4.DISPLAY ALL BOOKS";
+	cout<<"\n\n\n\t5.BACK TO MAIN MENU";
+	cout<<"\n\n\n\tPLEASE ENTER YOUR CHOICE(1-5)";
+	cin>>ch2;
+	switch(ch2)
+	{
+		case 1: writestudent();
+		break;
+		case 2: displayalls();
+		break;
+		break;
+		case 3:writebook();
+		break;
+		case 4:displayallb();
+		break;
+		case 5:
+		return;
+		default:
+		cout<<"Invalid choice"; 
+	}
+	adminmenu();
+} 
+int main(){ 
+char ch;
+ system("CLS");
+start();
+do{
+	 system("CLS");
+	cout<<"\n\n\n\t MAIN MENU";
+	cout<<"\n\n\n\t1 BOOK ISSUE";
+	cout<<"\n\n\n\t2 BOOK DEPOSIT";
+	cout<<"\n\n\n\t3 ADMINISTRATOR MENU"; 
+	cout<<"\n\n\n\t4 EXIT";
+	cout<<"\n\n\n\t PLEASE SELECT YOUR OPTION(1-4)";  
+	ch=getche();
+	switch(ch)
+	{ case '1': bookissue(); 
+	  break;
+	  case '2': bookdeposit();
+	  break;
+	  case '3': adminmenu();
+	  break;
+	  case '4': 
+	  exit(0); 
+	  break;
+	  default:
+	  cout<<"INVALID CHOICE"; 
+	  
+	}         
+}while(ch!=4 ); 
+}
